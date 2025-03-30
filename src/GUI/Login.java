@@ -3,18 +3,32 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+class GradientPanel extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        // Tạo gradient từ màu xanh dương sang xanh tím
+        GradientPaint gradient = new GradientPaint(0, 0, new Color(0, 153, 255),
+                getWidth(), getHeight(), new Color(102, 0, 204));
+        g2d.setPaint(gradient);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+    }
+}
+
 public class Login {
     public static void main(String[] args) {
                 // Tạo frame
-                JFrame frame = new JFrame("User Login");
+                JFrame frame = new JFrame("Đăng nhập");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(500, 300);
                 frame.setLocationRelativeTo(null);
 
+
                 // Panel chính
-                JPanel panel = new JPanel();
+                JPanel panel = new GradientPanel();
                 panel.setLayout(new GridBagLayout());
-                panel.setBackground(Color.WHITE);
                 GridBagConstraints gbc = new GridBagConstraints();
                 gbc.insets = new Insets(10, 10, 10, 10);
 
