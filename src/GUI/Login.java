@@ -10,10 +10,9 @@ class GradientPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         // Tạo gradient từ màu xanh dương sang xanh tím
-        GradientPaint gradient = new GradientPaint(0, 0, new Color(0, 153, 255),
-                getWidth(), getHeight(), new Color(102, 0, 204));
+        GradientPaint gradient = new GradientPaint(0, 0, new Color(78, 93, 248), getWidth(), getHeight(), new Color(196, 215, 248, 226));
         g2d.setPaint(gradient);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+        g2d.fillRect(1, 2, getWidth(), getHeight());
     }
 }
 
@@ -22,7 +21,7 @@ public class Login {
                 // Tạo frame
                 JFrame frame = new JFrame("Đăng nhập");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(500, 300);
+                frame.setSize(800, 500);
                 frame.setLocationRelativeTo(null);
 
 
@@ -49,6 +48,7 @@ public class Login {
                 // Ô nhập Email
                 JTextField emailField = new JTextField(20);
                 emailField.setBorder(BorderFactory.createTitledBorder("Email Id"));
+                emailField.setCaretColor(Color.blue);
                 gbc.gridy = 2;
                 gbc.gridwidth = 2;
                 panel.add(emailField, gbc);
@@ -56,6 +56,7 @@ public class Login {
                 // Ô nhập Password
                 JPasswordField passwordField = new JPasswordField(20);
                 passwordField.setBorder(BorderFactory.createTitledBorder("Password"));
+                passwordField.setCaretColor(Color.blue);
                 gbc.gridy = 3;
                 panel.add(passwordField, gbc);
 
