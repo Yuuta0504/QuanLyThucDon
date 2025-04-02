@@ -47,7 +47,7 @@ public class Login {
 
                 // Ô nhập Email
                 JTextField emailField = new JTextField(20);
-                emailField.setBorder(BorderFactory.createTitledBorder("Email Id"));
+                emailField.setBorder(BorderFactory.createTitledBorder("Email/ID"));
                 emailField.setCaretColor(Color.blue);
                 gbc.gridy = 2;
                 gbc.gridwidth = 2;
