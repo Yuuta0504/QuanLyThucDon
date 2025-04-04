@@ -1,5 +1,7 @@
 package GUI;
 
+import DAO.UserDAO;
+
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -68,6 +70,19 @@ public class Login {
         loginButton.setForeground(Color.BLACK);
         gbc.gridy = 4;
         panel.add(loginButton, gbc);
+
+        loginButton.addActionListener(e -> {
+            String email = emailField.getText();
+            String password = new String(passwordField.getPassword());
+
+            if (UserDAO.CheckLogin(email, password)) {
+                JOptionPane.showMessageDialog(frame, "Chào Mừng!");
+                frame.dispose();
+                Menu.main(new String[]{});
+            } else {
+                JOptionPane.showMessageDialog(frame, "Không đúng email hoặc mật!");
+            }
+        });
 
         //Chuyển qua trang đăng kí
         JButton registerButton = new JButton("Register");
