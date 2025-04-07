@@ -52,7 +52,15 @@ public class Register{
         JButton registerButton = new JButton("Đăng ký");
         panel.add(registerButton, gbc);
 
+        JButton backtoLogin = new JButton("Quay lại trang Đăng nhập");
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        panel.add(backtoLogin, gbc);
 
+        backtoLogin.addActionListener(e -> {
+            frame.dispose();
+            Login.main(new String[]{});
+        });
         // Xử lý sự kiện khi nhấn nút Đăng ký
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
