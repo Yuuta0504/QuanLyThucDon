@@ -97,7 +97,7 @@ public class Login {
         });
 
         // Link quên mật khẩu
-        JLabel forgotLabel = new JLabel("Forgot Username / Password?");
+        JLabel forgotLabel = new JLabel("Forgot Password?");
         forgotLabel.setForeground(Color.YELLOW);
         gbc.gridy = 6;
         panel.add(forgotLabel, gbc);
