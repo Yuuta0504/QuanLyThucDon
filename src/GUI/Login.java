@@ -106,6 +106,7 @@ public class Login {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
+                ForgetGUI.main(new String[]{});
             }
 
             @Override
