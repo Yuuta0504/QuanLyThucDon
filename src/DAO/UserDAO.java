@@ -1,10 +1,13 @@
 package DAO;
 
+
+import Model.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Period;
+
 
 public class UserDAO {
     public static boolean CheckLogin(String email, String password) {
@@ -32,6 +35,22 @@ public class UserDAO {
             return rs.next();
         }
         catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static boolean InsertUser(User user) {
+        String query = "insert into users(email, password) values (?, ?);";
+        try (Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2, user.getPassword());
+
+            int rows = stmt.executeUpdate();
+            connection.close();
+            return rows > 0;
+
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
