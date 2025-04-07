@@ -1,5 +1,8 @@
 package GUI;
 
+import DAO.UserDAO;
+import Model.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -64,17 +67,24 @@ public class Register{
         // Xử lý sự kiện khi nhấn nút Đăng ký
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
+                String email = usernameField.getText();
                 String password = new String(passwordField.getPassword());
                 String confirmPassword = new String(confirmPasswordField.getPassword());
 
-                if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Vui lòng điền đầy đủ thông tin!");
                 } else if (!password.equals(confirmPassword)) {
                     JOptionPane.showMessageDialog(frame, "Mật khẩu xác nhận không khớp!");
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Đăng ký thành công!");
-                    // Lưu trữ hoặc xử lý dữ liệu ở đây
+                    User newUser = new User(email, password);
+                    if (UserDAO.InsertUser(newUser)) {
+                        JOptionPane.showMessageDialog(frame, "Đăng ký thành công!");
+                        frame.dispose();
+                        Login.main(new String[]{});
+                        // Lưu trữ hoặc xử lý dữ liệu ở đây
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Đăng ký không thành công!, Có thể tài khoản đã tồn tại");
+                    }
                 }
             }
         });
