@@ -77,6 +77,15 @@ public class Menu {
                 }
             });
 
+            if (item.equals("Trang chủ")) {
+                btn.addActionListener(e -> {
+                    right_column.removeAll();
+                    right_column.add(new HomePanel());
+                    right_column.repaint();
+                    right_column.revalidate();
+                });
+            }
+
             if (item.equals("Thoát")) {
                 btn.addActionListener(e -> {
                     int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn thoát chứ?");
