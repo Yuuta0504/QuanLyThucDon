@@ -1,17 +1,8 @@
 package Model;
 
 public class User {
-    private int id;
-    private String email;
-    private String password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+   private String email;
+   private String password;
 
     public String getEmail() {
         return email;
@@ -29,8 +20,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String email, String password) {
-        this.id = id;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
