@@ -22,8 +22,9 @@ public class Menu {
         panel.add(left_column, BorderLayout.WEST);
 
         //main menu
-        JPanel right_column = new GradientPanel();
-        right_column.setLayout(new FlowLayout());
+        CardLayout cardLayout = new CardLayout();
+        GradientPanel right_column = new GradientPanel();
+        right_column.setLayout(cardLayout);
         panel.add(right_column, BorderLayout.CENTER);
 
         // Tiêu đề sidebar
@@ -42,7 +43,7 @@ public class Menu {
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBackground(new Color(29, 37, 50));
 
-        String[] menuItems = {"Trang chủ", "Thực đơn", "Hóa đơn", "Bàn ăn", "Thoát"};
+        String[] menuItems = {"Thực đơn", "Hóa đơn", "Bàn ăn", "Thoát"};
         for (String item : menuItems) {
             JButton btn = new JButton(item);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -76,20 +77,41 @@ public class Menu {
                     btn.setForeground(new Color(213, 213, 213));
                 }
             });
+            JPanel thucdon = new JPanel();
+            thucdon.setOpaque(false);
+            thucdon.setLayout(new BorderLayout());
+            thucdon.add(new JLabel("Đây là giao diện Thực đơn", SwingConstants.CENTER), BorderLayout.CENTER);
+            right_column.add(thucdon, "Thực đơn");
 
-            if (item.equals("Trang chủ")) {
-                btn.addActionListener(e -> {
-                    right_column.removeAll();
-                    right_column.add(new HomePanel());
-                    right_column.repaint();
-                    right_column.revalidate();
-                });
+
+            JPanel hoadon = new JPanel();
+            hoadon.setOpaque(false);
+            hoadon.setLayout(new BorderLayout());
+            hoadon.add(new JLabel("Đây là giao diện Hoá đơn", SwingConstants.CENTER), BorderLayout.CENTER);
+            right_column.add(hoadon, "Hoá Đơn");
+
+            JPanel banan = new JPanel();
+            banan.setOpaque(false);
+            banan.setLayout(new BorderLayout());
+            banan.add(new JLabel("Đây là giao diện Bàn ăn", SwingConstants.CENTER), BorderLayout.CENTER);
+            right_column.add(banan, "Bàn ăn");
+
+
+            if (item.equals("Thực đơn")) {
+                btn.addActionListener(e -> cardLayout.show(right_column, "Thực đơn"));
             }
 
+            if (item.equals("Hóa đơn")) {
+                btn.addActionListener(e -> cardLayout.show(right_column, "Hoá Đơn"));
+            }
+
+            if (item.equals("Bàn ăn")) {
+                btn.addActionListener(e -> cardLayout.show(right_column, "Bàn ăn"));
+            }
             if (item.equals("Thoát")) {
                 btn.addActionListener(e -> {
                     int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn thoát chứ?");
-                    if (choice == JOptionPane.YES_OPTION){
+                    if (choice == JOptionPane.YES_OPTION) {
                         frame.dispose();
                         Login.main(new String[]{});
                     }
