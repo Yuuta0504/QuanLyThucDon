@@ -77,7 +77,7 @@ public class Register{
                     JOptionPane.showMessageDialog(frame, "Mật khẩu xác nhận không khớp!");
                 } else {
                     User newUser = new User(email, password);
-                    if (UserDAO.InsertUser(newUser)) {
+                    if (UserDAO.InsertUser(newUser)){
                         JOptionPane.showMessageDialog(frame, "Đăng ký thành công!");
                         frame.dispose();
                         Login.main(new String[]{});

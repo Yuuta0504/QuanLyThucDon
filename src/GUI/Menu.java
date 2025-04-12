@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class Menu {
+public class  Menu {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Menu Chính");
         frame.setSize(1200, 750);
@@ -77,10 +77,13 @@ public class Menu {
                     btn.setForeground(new Color(213, 213, 213));
                 }
             });
-            JPanel thucdon = new JPanel();
-            thucdon.setOpaque(false);
-            thucdon.setLayout(new BorderLayout());
-            thucdon.add(new JLabel("Đây là giao diện Thực đơn", SwingConstants.CENTER), BorderLayout.CENTER);
+//            JPanel thucdon = new JPanel();
+//            thucdon.setOpaque(false);
+//            thucdon.setLayout(new BorderLayout());
+//            thucdon.add(new JLabel("Đây là giao diện Thực đơn", SwingConstants.CENTER), BorderLayout.CENTER);
+//            right_column.add(thucdon, "Thực đơn");
+//            JPanel thucdon = new JPanel();
+            ThucDon thucdon = new ThucDon();
             right_column.add(thucdon, "Thực đơn");
 
 
