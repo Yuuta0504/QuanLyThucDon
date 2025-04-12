@@ -55,4 +55,34 @@ public class UserDAO {
             return false;
         }
     }
+    public static User findUserbyEmail(String email) {
+        String query = "SELECT email,password FROM users WHERE email = ?";
+        try (Connection con = DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String foundEmail = rs.getString("email");
+                String foundPassword = rs.getString("password");
+                return new User(foundEmail, foundPassword);
+            }
+        } catch (Exception e ) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static boolean updatePassword(String email, String newPassword) {
+        String query = "UPDATE users SET password = ? WHERE email = ?";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, email);
+            int rows = stmt.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
